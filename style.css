@@ -6,6 +6,15 @@ body {
   margin: auto;
 }
 
+#bg {
+  background-color: rgb(67, 67, 67);
+  height: 100svh;
+  width: 100svh;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
 h1 {
   text-align: center;
 }
