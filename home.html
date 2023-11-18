@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achievement Maker</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="home.js" defer></script>
+</head>
+<body>
+  <h1>Achievement Maker that happens to look like Steam's</h1>
+  <p>Some notes:</p>
+  <ul>
+    <li>The preview is worse quality than the final result</li>
+    <li>The border around the preview will not be present in the final result</li>
+    <li>There will not be an automatic background for transparent images. This is so you can have circle frames</li>
+    <li>The image will automatically scale to a 1:1 ratio</li>
+  </ul>
+  <label>Upload Achievement Icon</label><br>
+  <input type="file" id="file"><br><br>
+  <label>Achievement Title: </label><br>
+  <input type="text" id="title" name="title">
+  <br><br>
+  <label>Achievement Description: </label><br>
+  <textarea id="desc" name="desc" rows="4" cols="50"></textarea>
+  <br><br>
+  <canvas id="achievement-canvas" width="550px" height="204px">
+  </canvas>
+
+  <button id="download-btn" onclick="downloadImage()">Download</button>
+</body>
+</html>
