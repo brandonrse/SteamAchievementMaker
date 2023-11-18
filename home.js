@@ -5,14 +5,22 @@ window.addEventListener('load', () => {
   
   var bgImage = new Image();
   bgImage.src = "assets/achievement-bg.png";
+  // For the icon
+  var img = new Image;
   
   var titleInput = document.getElementById("title");
   var descInput = document.getElementById("desc");
   var fileInput = document.getElementById("file");
+
+  var isImageLoaded = false;
   
   function drawText() {
     clearCanvas()
     ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+
+    if (isImageLoaded) {
+      ctx.drawImage(img, 10, 10, 184.96, 184.96)
+    }
 
     ctx.fillStyle = "white";
     ctx.font = "18px Arial";
@@ -38,11 +46,11 @@ window.addEventListener('load', () => {
   }
   
   function handleFiles(e) {
-    var img = new Image;
     img.src = URL.createObjectURL(e.target.files[0]);
     img.onload = function() {
       ctx.drawImage(img, 10, 10, 184.96, 184.96)
     }
+    isImageLoaded = true;
   }
 
   bgImage.onload = function() {
