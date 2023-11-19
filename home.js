@@ -13,13 +13,18 @@ window.addEventListener('load', () => {
   var fileInput = document.getElementById("file");
 
   var isImageLoaded = false;
+  var hRatio;
+  var vRatio;
+  var ratio;
+  var centerShift_y;
+  var centerShift_x;
   
   function drawText() {
     clearCanvas()
     ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
 
     if (isImageLoaded) {
-      ctx.drawImage(img, 10, 10, 184.96, 184.96)
+      drawImageCanvas()
     }
 
     ctx.fillStyle = "white";
@@ -46,11 +51,24 @@ window.addEventListener('load', () => {
   }
   
   function handleFiles(e) {
+    clearCanvas()
+    isImageLoaded = false
+    drawText()
     img.src = URL.createObjectURL(e.target.files[0]);
     img.onload = function() {
-      ctx.drawImage(img, 10, 10, 184.96, 184.96)
+      drawImageCanvas()
     }
     isImageLoaded = true;
+  }
+
+  function drawImageCanvas() {
+    hRatio = 184.96 / img.width;
+    vRatio = 184.96 / img.height;
+    ratio = Math.min(hRatio, vRatio);
+    centerShift_y = (canvas.height - img.height * ratio) / 2;
+    centerShift_x = (210 - img.width * ratio) / 2;
+
+    ctx.drawImage(img, 10, 10, img.width, img.height, centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
   }
 
   bgImage.onload = function() {
