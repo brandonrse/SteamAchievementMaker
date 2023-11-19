@@ -37,16 +37,17 @@ window.addEventListener('load', () => {
 
     wrappedText.forEach(line => {
       ctx.fillText(line, 210, height);
-      height += 22
+      height += 25
     });
 
     ctx.fillStyle = "lightgrey"
+    ctx.font = "16px Arial";
 
     const wrappedDescText = wrapText(ctx, descInput.value, maxWidth)
 
     wrappedDescText.forEach(line => {
       ctx.fillText(line, 210, height);
-      height += 22
+      height += 25
     });
   }
   
